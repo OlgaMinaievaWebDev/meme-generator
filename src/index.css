@@ -36,10 +36,14 @@ main {
   font-weight: 500;
 }
 
-form {
+.form {
   display: grid;
-  grid-template: 40px 40px / 1fr 1fr;
+  grid-template: 100% 100% / 1fr 1fr;
   gap: 17px;
+}
+
+.form--label {
+  margin-bottom: 5px;
 }
 
 .form--input {
@@ -47,10 +51,12 @@ form {
   border-radius: 5px;
   border: 1px solid #d5d4d8;
   text-indent: 5px;
+  height: 35px;
+  width: 100%;
 }
 
 .form--button {
-  grid-column: 1/-1;
+  grid-column: 1 / -1;
   font-family: "Karla", sans-serif;
   border-radius: 5px;
   background: linear-gradient(90.41deg, #711f8d 1.14%, #a818da 100%);
