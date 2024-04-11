@@ -7,7 +7,16 @@ export default function Meme() {
     bottomText: "",
     randomImage: "http://i.imgflip.com/1bij.jpg",
   });
+
   const [allMemeImages, setAllMemeImages] = useState(memesData);
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setMeme((prevMeme) => ({
+      ...prevMeme,
+      [name]: value,
+    }));
+  }
 
   function getMemeImage() {
     const memesArray = allMemeImages.data.memes;
@@ -22,19 +31,31 @@ export default function Meme() {
   return (
     <main>
       <div className="form">
-        <label htmlFor="top-text">
-          Top Text
-          <input id="top-text" type="text" className="form--input" />
-        </label>
-        <label htmlFor="bottom-text">
-          Bottom Text
-          <input id="bottom-text" type="text" className="form--input" />
-        </label>
+        <input
+          type="text"
+          placeholder="Top text"
+          className="form--input"
+          name="topText"
+          value={meme.topText}
+          onChange={handleChange}
+        />
+        <input
+          type="text"
+          placeholder="Bottom text"
+          className="form--input"
+          name="bottomText"
+          value={meme.bottomText}
+          onChange={handleChange}
+        />
         <button className="form--button" onClick={getMemeImage}>
           Get a new meme image 🖼
         </button>
       </div>
-      <img src={meme.randomImage} className="meme--image" alt="random meme" />
+      <div className="meme">
+        <img src={meme.randomImage} className="meme--image" />
+        <h2 className="meme--text top">{meme.topText}</h2>
+        <h2 className="meme--text bottom">{meme.bottomText}</h2>
+      </div>
     </main>
   );
 }
